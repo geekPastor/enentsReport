@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">events-report</string>
+    <string name="web_client">events-report</string>
 </resources>
