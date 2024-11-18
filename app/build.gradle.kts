@@ -73,4 +73,8 @@ dependencies {
     //navigation
     implementation(libs.androidx.navigation.compose)
 
+
+    //material icons
+    implementation(libs.jetbrains.material.icons.extended.desktop)
+
 }

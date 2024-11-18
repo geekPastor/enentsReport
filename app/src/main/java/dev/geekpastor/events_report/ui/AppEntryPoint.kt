@@ -31,8 +31,6 @@ fun ComponentActivity.installUI(){
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
-                    },
-                    bottomBar = {
                     }
                 ) {
                     Column(
