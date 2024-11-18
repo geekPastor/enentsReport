@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
+import dev.geekpastor.events_report.ui.screens.createPost.CreatePostScreenRoute
 import dev.geekpastor.events_report.ui.screens.home.HomeScreenRoute
 import dev.geekpastor.events_report.ui.screens.login.LoginScreenRoute
 import dev.geekpastor.events_report.ui.screens.postDetails.PostDetailsScreenRoute
@@ -62,6 +63,9 @@ fun AppNavHost(
             PostDetailsScreenRoute()
         }
 
+        composable(route = Destination.CreatePostScreen.route.name){
+            CreatePostScreenRoute()
+        }
     }
 
 }
