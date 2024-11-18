@@ -12,6 +12,7 @@ import dev.geekpastor.events_report.ui.screens.createPost.CreatePostScreenRoute
 import dev.geekpastor.events_report.ui.screens.home.HomeScreenRoute
 import dev.geekpastor.events_report.ui.screens.login.LoginScreenRoute
 import dev.geekpastor.events_report.ui.screens.postDetails.PostDetailsScreenRoute
+import dev.geekpastor.events_report.ui.screens.profile.ProfileScreenRoute
 
 @Composable
 fun AppNavHost(
@@ -65,6 +66,10 @@ fun AppNavHost(
 
         composable(route = Destination.CreatePostScreen.route.name){
             CreatePostScreenRoute()
+        }
+
+        composable(route = Destination.ProfileScreen.route.name){
+            ProfileScreenRoute()
         }
     }
 
