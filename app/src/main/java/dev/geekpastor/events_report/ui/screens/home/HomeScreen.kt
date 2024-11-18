@@ -11,13 +11,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.geekpastor.events_report.ui.components.PostComponent
 
 @Composable
-fun HomeScreenRoute(){
-    HomeScreen()
+fun HomeScreenRoute(
+    navigateToDetails: ()-> Unit = {}
+){
+    HomeScreen(
+        navigateToDetails = navigateToDetails
+    )
 }
 
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+    navigateToDetails: ()-> Unit = {}
+){
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -26,7 +32,9 @@ fun HomeScreen(){
     ) {
         LazyColumn{
             items(12){
-                PostComponent()
+                PostComponent(
+                    navigateToDetails = navigateToDetails
+                )
             }
         }
     }

@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
 import dev.geekpastor.events_report.ui.screens.home.HomeScreenRoute
 import dev.geekpastor.events_report.ui.screens.login.LoginScreenRoute
+import dev.geekpastor.events_report.ui.screens.postDetails.PostDetailsScreenRoute
 
 @Composable
 fun AppNavHost(
@@ -45,13 +46,20 @@ fun AppNavHost(
                         }
                     }
                 }
-
             )
 
         }
 
         composable(route = Destination.HomeScreen.route.name){
-            HomeScreenRoute()
+            HomeScreenRoute(
+                navigateToDetails = {
+                    navController.navigate(Destination.PostDetailsScreen.route.name)
+                }
+            )
+        }
+
+        composable(route = Destination.PostDetailsScreen.route.name){
+            PostDetailsScreenRoute()
         }
 
     }

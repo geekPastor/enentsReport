@@ -1,7 +1,8 @@
-package dev.geekpastor.events_report.ui.components
+package dev.geekpastor.events_report.ui.screens.postDetails
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -31,34 +32,26 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.geekpastor.events_report.R
-import dev.geekpastor.events_report.ui.theme.EventsreportTheme
+
 
 @Composable
-fun PostComponent(
-    modifier: Modifier = Modifier,
-    navigateToDetails: ()-> Unit = {}
+fun PostDetailsScreenRoute(
+    modifier: Modifier = Modifier
+){
+    PostDetailsScreen()
+}
+
+@Composable
+fun PostDetailsScreen(
+    modifier: Modifier = Modifier
 ){
 
+    val verticalScroll = rememberScrollState()
     Column(
         modifier = modifier
-            .padding(top = 10.dp, end = 10.dp, start = 10.dp)
-            .fillMaxWidth()
-            .background(color = Color(0xFFBCC6D7))
-    ) {
-        Surface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(300.dp)
-                .background(color = Color.Transparent),
-        ) {
-            Image(
-                painter = painterResource(R.drawable.default_image),
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
-        }
-
+            .fillMaxSize()
+            .verticalScroll(verticalScroll)
+    ){
         Column(
             modifier = Modifier
                 .padding(10.dp)
@@ -70,12 +63,51 @@ fun PostComponent(
                 fontWeight = FontWeight.SemiBold
             )
 
-            Row(
+            Spacer(
+                modifier = Modifier
+                    .height(10.dp)
+            )
+
+            Text(
+                text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                color = Color.Black,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Normal,
+                lineHeight = 24.sp
+            )
+        }
+
+        Column(
+            modifier = modifier
+                .padding(top = 10.dp, end = 10.dp, start = 10.dp)
+                .fillMaxWidth()
+                .background(color = Color.Transparent)
+        ) {
+            Surface(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 10.dp)
+                    .height(300.dp)
+                    .background(color = Color.Transparent),
             ) {
-                Row {
+                Image(
+                    painter = painterResource(R.drawable.default_image),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .padding(10.dp)
+            ){
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp),
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
                     OutlinedButton(
                         onClick = {},
                         colors = ButtonDefaults.outlinedButtonColors(
@@ -118,30 +150,13 @@ fun PostComponent(
                         )
                     }
                 }
-                OutlinedButton(
-                    onClick = {
-                        navigateToDetails()
-                    },
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = Color.White,
-                        containerColor = Color(0xFF00204A)
-                    ),
-                    modifier = Modifier
-                        .height(50.dp)
-                        .width(150.dp),
-                    shape = RoundedCornerShape(10.dp)
-                ) {
-                    Text(text = "Lire Plus")
-                }
             }
         }
     }
 }
 
 @Composable
-@Preview()
-fun PostComponentPreview(){
-    EventsreportTheme {
-        PostComponent()
-    }
+@Preview(showBackground = true)
+fun PostDetailsScreenPreview(){
+    PostDetailsScreen()
 }
