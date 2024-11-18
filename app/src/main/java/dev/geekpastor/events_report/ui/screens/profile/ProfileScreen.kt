@@ -28,6 +28,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import dev.geekpastor.events_report.R
 
 @Composable
@@ -37,6 +40,9 @@ fun ProfileScreenRoute(){
 
 @Composable
 fun ProfileScreen(){
+
+    val userInfo = Firebase.auth.currentUser
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -48,13 +54,23 @@ fun ProfileScreen(){
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                painter = painterResource(R.drawable.ic_launcher_background),
-                contentDescription = "",
-                modifier = Modifier
-                    .size(150.dp)
-                    .clip(RoundedCornerShape(50))
-            )
+            if (userInfo?.photoUrl != null){
+                AsyncImage(
+                    model = userInfo.photoUrl,
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(RoundedCornerShape(50))
+                )
+            } else{
+                Image(
+                    painter = painterResource(R.drawable.ic_launcher_background),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(RoundedCornerShape(50))
+                )
+            }
 
             Column(
                 modifier = Modifier
@@ -63,7 +79,7 @@ fun ProfileScreen(){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Chrinovic Mukeba",
+                    text = if (userInfo!= null) userInfo.displayName.toString() else "Nom",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Medium
                 )
@@ -72,7 +88,7 @@ fun ProfileScreen(){
                     modifier = Modifier.height(5.dp)
                 )
                 Text(
-                    text = "chrinovicmukeba123@gmail.com",
+                    text = if (userInfo!= null) userInfo.email.toString() else "email",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Normal
                 )

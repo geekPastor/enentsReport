@@ -77,4 +77,8 @@ dependencies {
     //material icons
     implementation(libs.jetbrains.material.icons.extended.desktop)
 
+    //Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
 }

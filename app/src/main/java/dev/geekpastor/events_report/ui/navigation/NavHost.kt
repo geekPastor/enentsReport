@@ -49,7 +49,6 @@ fun AppNavHost(
                     }
                 }
             )
-
         }
 
         composable(route = Destination.HomeScreen.route.name){
